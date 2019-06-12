@@ -89,3 +89,50 @@ html {
   width: 100%;
   height: 100%;
 }
+
+/* Variables */
+:root {
+  /* Variable: colors */
+  --cwhite: #fcfafa;
+  --cblack: #0b2a34;
+  --cyellow: #2aafcc;
+  --cblue: #ffd075;
+  /* Variable: fonts */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: var(--cblack);
+}
+
+@media (max-width: 499px) {
+  :root {
+    font-size: 1rem;
+    --fdefault: 1rem;
+    --fbutton: 1.5rem;
+    --fheader: 2rem;
+    --fsubheader: 1.33rem;
+    --ftitle: 2rem;
+    --fsubtitle: 2rem;
+    --fmenu: 2.5rem;
+  }
+}
+
+@media (min-width: 500px) {
+  :root {
+    font-size: 1.3rem;
+    --fdefault: 1rem;
+    --fbutton: 1.43rem;
+    --fheader: 2.24rem;
+    --fsubheader: 1.14rem;
+    --ftitle: 2.24rem;
+    --fsubtitle: 1.29rem;
+    --fmenu: 1rem;
+  }
+}
+
+html {
+  background: var(--cwhite);
+}
+
+body {
+  max-width: 1440px;
+}
