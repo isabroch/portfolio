@@ -303,124 +303,124 @@ html {
 //     text-align: center;
 //   }
 
-  &.grid {
+//   &.grid {
 
-    // Desktop
-    @media (min-width: $bp) {
-      grid-template-columns: 4fr 8fr;
-      grid-template-rows: 1fr 1fr;
-      grid-template-areas:
-        "heroImage heroTitle"
-        "heroImage heroCTA"
-    }
-  }
+//     // Desktop
+//     @media (min-width: $bp) {
+//       grid-template-columns: 4fr 8fr;
+//       grid-template-rows: 1fr 1fr;
+//       grid-template-areas:
+//         "heroImage heroTitle"
+//         "heroImage heroCTA"
+//     }
+//   }
 
-  &__image {
-    grid-area: heroImage;
+//   &__image {
+//     grid-area: heroImage;
 
-    display: grid;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
+//     display: grid;
+//     align-content: center;
+//     align-items: center;
+//     justify-content: center;
+//     justify-items: center;
 
-    position: relative;
+//     position: relative;
 
-    // Mobile
-    @media (max-width: $bp - 1) {
-      margin: 6em 0 6em;
-    }
+//     // Mobile
+//     @media (max-width: $bp - 1) {
+//       margin: 6em 0 6em;
+//     }
 
 
-    img {
-      grid-area: 1 / 1;
-      position: relative;
-      top: -15px;
-    }
+//     img {
+//       grid-area: 1 / 1;
+//       position: relative;
+//       top: -15px;
+//     }
 
-    &::before {
-      content: '';
-      border-radius: var(--bradius);
-      width: 110%;
-      height: 0;
-      padding-top: 110%;
-      background: var(--cblue);
-      grid-area: 1 / 1;
-      transform: rotate(45deg);
-      animation: spinningSquare 20s infinite linear;
-    }
-  }
+//     &::before {
+//       content: '';
+//       border-radius: var(--bradius);
+//       width: 110%;
+//       height: 0;
+//       padding-top: 110%;
+//       background: var(--cblue);
+//       grid-area: 1 / 1;
+//       transform: rotate(45deg);
+//       animation: spinningSquare 20s infinite linear;
+//     }
+//   }
 
-  &__title {
+//   &__title {
 
-    // Mobile
-    @media (max-width: $bp - 1) {
-      margin: 0 0 auto 0;
-    }
+//     // Mobile
+//     @media (max-width: $bp - 1) {
+//       margin: 0 0 auto 0;
+//     }
 
-    // Desktop
-    @media (min-width: $bp) {
-      grid-area: heroTitle;
-      text-align: center;
-      align-self: end;
-    }
-  }
+//     // Desktop
+//     @media (min-width: $bp) {
+//       grid-area: heroTitle;
+//       text-align: center;
+//       align-self: end;
+//     }
+//   }
 
-  &__cta {
-    grid-area: heroCTA;
+//   &__cta {
+//     grid-area: heroCTA;
 
-    @media (max-width: $bp - 1) {
-      margin: 0 0 7em 0;
-    }
+//     @media (max-width: $bp - 1) {
+//       margin: 0 0 7em 0;
+//     }
 
-    // Desktop
-    @media (min-width: $bp) {
-      display: flex;
-      align-items: center;
-      padding: 0 100px;
-      justify-content: space-between;
-    }
-  }
+//     // Desktop
+//     @media (min-width: $bp) {
+//       display: flex;
+//       align-items: center;
+//       padding: 0 100px;
+//       justify-content: space-between;
+//     }
+//   }
 
-  @at-root .title {
-    @include font(var(--ftitle), 500);
-    color: var(--cblack);
-    text-transform: lowercase;
-    line-height: 1.8;
-  }
+//   @at-root .title {
+//     @include font(var(--ftitle), 500);
+//     color: var(--cblack);
+//     text-transform: lowercase;
+//     line-height: 1.8;
+//   }
 
-  @at-root .subtitle {
-    @include font(var(--fsubtitle), 400);
-    color: var(--cblue);
-    text-transform: lowercase;
-    line-height: 1.15;
-  }
+//   @at-root .subtitle {
+//     @include font(var(--fsubtitle), 400);
+//     color: var(--cblue);
+//     text-transform: lowercase;
+//     line-height: 1.15;
+//   }
 
-  @at-root .cta {
-    @media (min-width: $bp) {
-      order: 2;
-    }
-  }
+//   @at-root .cta {
+//     @media (min-width: $bp) {
+//       order: 2;
+//     }
+//   }
 
-  @at-root .extra {
-    margin-right: 25px;
-  }
+//   @at-root .extra {
+//     margin-right: 25px;
+//   }
 
-  @at-root .email {
-    display: block;
-    font-weight: 500;
-    color: var(--cblack);
+//   @at-root .email {
+//     display: block;
+//     font-weight: 500;
+//     color: var(--cblack);
 
-    // Desktop
-    @media (min-width: $bp) {
-      order: 1;
-    }
-  }
-}
+//     // Desktop
+//     @media (min-width: $bp) {
+//       order: 1;
+//     }
+//   }
+// }
 
-/* Om mig section */
-.omMig {
-  &__para {
-    margin: -1rem 35px 0 35px;
-  }
-}
+// /* Om mig section */
+// .omMig {
+//   &__para {
+//     margin: -1rem 35px 0 35px;
+//   }
+// }

@@ -1,0 +1,379 @@
+@import 'standard';
+
+$bp: 800px;
+
+/* Variables */
+:root {
+  /* Variable: colors */
+  --cwhite: #fcfafa;
+  --cblack: #0b2a34;
+  --cblue: #2aafcc;
+  --cyellow: #ffd075;
+
+  /* Variable: fonts */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: var(--cblack);
+
+  @media (max-width: $bp - 1) {
+    font-size: 12px;
+    --fdefault: 1rem;
+    --fbutton: 1.5rem;
+    --fheader: 2rem;
+    --fsubheader: 1.33rem;
+    --ftitle: 24px;
+    --fsubtitle: 24px;
+    --fmenu: 30px;
+  }
+
+  @media (min-width: $bp) {
+    font-size: 21px;
+    --fdefault: 1rem;
+    --fbutton: 1.43rem;
+    --fheader: 2.24rem;
+    --fsubheader: 1.43rem;
+    --ftitle: 2.24rem;
+    --fsubtitle: 1.29rem;
+    --fmenu: 1rem;
+  }
+
+  /* Variable: border radius */
+  --bradius: 5px;
+}
+
+// Quick mixin for font
+@mixin font($size: 0, $weight: 0, $color: 0, $style: 0) {
+
+  @if $size !=0 {
+    font-size: var(--f#{$size});
+  }
+
+  @if $weight !=0 {
+    font-weight: $weight;
+  }
+
+  @if $style !=0 {
+    font-style: italic;
+  }
+
+  @if $color !=0 {
+    color: var(--c#{$color});
+  }
+}
+
+/* Site background */
+html {
+  background: var(--cwhite);
+}
+
+.wrapper {
+  position: relative;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    line-height: 1.3;
+    position: relative;
+}
+
+/* Sections */
+.section {
+  margin: 0 0 45px 0;
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-areas:
+    "h h h"
+    ". c .";
+
+  @at-root .header {
+    grid-area: h;
+  }
+
+  @at-root .content {
+    grid-area: c;
+  }
+}
+
+/* Headers and subheaders */
+.header {
+  @include font(header, 800, blue);
+  text-transform: uppercase;
+
+  &::before {
+    content: '<!-- '
+  }
+
+  &::after {
+    content: ' -->'
+  }
+}
+
+.subheader {
+  @include font(subheader, 800, blue);
+  text-transform: uppercase;
+
+  &.--d-right {
+    text-align: right;
+    padding-right: 0.1em;
+  }
+
+  &.--m-right {
+    text-align: right;
+    padding-right: 0.1em;
+  }
+}
+
+/* Call to action button */
+.cta {
+    width: 100%;
+    background: var(--cyellow);
+
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: var(--bradius);
+    @include font(button, 800, black);
+    text-transform: uppercase;
+    box-shadow: inset 0px -2px 0px rgba(11, 42, 52, 0.2);
+
+    &--blue {
+      background: var(--cblue);
+      @include font(button, 500, white);
+    }
+  }
+
+/* Sections: content (does not include hero) */
+.content {
+  display: grid;
+  grid-gap: 0 25px;
+  margin: 1em 0;
+
+  &--om {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+
+  &--ma {
+    grid-template-columns: minmax(180px, 2fr) 8fr;
+  }
+
+  &--k {
+      // before breakpoint
+      @media (max-width: $bp - 1) {
+        grid-template-columns: 1fr;
+      }
+      // after breakpoint
+      @media (min-width: $bp) {
+        grid-template-columns: 1fr 1fr;
+      }
+  }
+
+  p {
+    margin: 0.5em 0;
+
+    &:last-child {
+      margin-bottom: 1.25em;
+    }
+  }
+}
+
+/* Om mig section start */
+
+.readmore {
+  &--text {
+    overflow: hidden;
+    position: relative;
+
+    &.hiding {
+      // before breakpoint
+      @media (max-width: $bp - 1) {
+        max-height: 120px;
+      }
+      // after breakpoint
+      @media (min-width: $bp) {
+        max-height: 480px;
+      }
+    }
+
+    &.hiding::after {
+      content: '';
+      display: block;
+      bottom: 0;
+      position: absolute;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0), var(--cwhite));
+      opacity: 1;
+    }
+  }
+
+  &--button {
+    background: none;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3em;
+
+    &--text {
+      display: inline-flex;
+      align-items: center;
+      text-transform: lowercase;
+      @include font(default, 400, blue);
+      position: relative;
+
+      svg {
+        fill: var(--cblue);
+      }
+
+      &.hiding {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        border-bottom: 1px solid var(--cblue);
+      }
+
+      &::before {
+        right: 120%;
+      }
+
+      &::after {
+        left: 110%;
+      }
+    }
+  }
+}
+
+/* Skills */
+.skill {
+  margin: 10px 0;
+
+  &--wrapper {
+    background: var(--cblue);
+    padding: 10px 20px;
+    margin: 0.5em 0;
+    border-radius: var(--bradius);
+  }
+
+  &--title {
+    @include font(skill, 800, white);
+    text-transform: uppercase;
+    margin: 0.1em 0;
+  }
+
+  &--bar {
+    width: 100%;
+    height: 1.35em;
+    background: var(--cwhite);
+    border-radius: var(--bradius);
+    overflow: hidden;
+  }
+
+  &--level {
+    @include font(skill, 500, black);
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    width: 50%;
+    height: 100%;
+    color: var(--cblack);
+    background: var(--cyellow);
+  }
+}
+
+/* Om mig section end */
+
+/* Kontakt section start */
+
+.content--k {
+  // before breakpoint
+  @media (max-width: $bp - 1) {
+    grid-template-areas:
+    "extra"
+    "."
+    "sh"
+    "form";
+  }
+  // after breakpoint
+  @media (min-width: $bp) {
+    grid-template-areas:
+    "sh sh"
+    "form extra";
+  }
+
+  @at-root .kontakt {
+    &--subheader {
+      grid-area: sh;
+    }
+    &--form {
+      grid-area: form;
+    }
+    &--extra {
+      grid-area: extra;
+    }
+  }
+}
+
+.kontakt {
+  &--form {
+    margin: 10px 0;
+    background: var(--cyellow);
+    border-radius: var(--bradius);
+    padding: 5px 10px;
+
+    input, textarea {
+      border: none;
+      background: var(--cwhite);
+      width: 100%;
+      margin: 0.25em 0;
+      padding: 5px 10px;
+      border-radius: var(--bradius);
+      font-family: inherit;
+      @include font(default, 400, black);
+
+      &::placeholder {
+        text-transform: lowercase;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin: 0.25em 0;
+      padding: 5px 10px;
+    }
+  }
+
+  &--extra {
+    margin: 10px 0 2em;
+
+    a {
+      display: grid;
+      margin: 0.75em 0;
+      grid-template-columns: repeat(2, max-content);
+      align-items: center;
+      grid-gap: 10px;
+      @include font(default, 500, black);
+
+      svg {
+        fill: var(--cblue);
+        width: 1.5em;
+        height: 1.5em;
+      }
+    }
+  }
+}
+/* Kontakt section end */
