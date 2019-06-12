@@ -61,6 +61,16 @@ html {
   box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+	outline: none;
+	border: none;
+}
+
 /* No horizontal scrolling issues, smooth scrolling on in page links */
 html {
   overflow-x: hidden;
