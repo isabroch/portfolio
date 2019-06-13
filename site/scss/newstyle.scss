@@ -66,6 +66,7 @@ $bp: 830px;
 /* Site background */
 html {
   background: var(--cwhite);
+  overflow-y: scroll;
 }
 
 .wrapper {
@@ -885,9 +886,21 @@ button {
 /* Project Page */
 
 .arrow {
-// position: absolute;
-width: 5rem;
-height: 5rem;
+position: absolute;
+
+// before breakpoint
+@media (max-width: $bp - 1) {
+  width: 8rem;
+  height: 8rem;
+  top: calc(50% - 4rem);
+}
+
+// after breakpoint
+@media (min-width: $bp) {
+  width: 5rem;
+  height: 5rem;
+  top: calc(50% - 2rem);
+}
 background: none;
 fill: var(--cblue);
 transition: transform 0.1s, filter 0.2s;
@@ -903,7 +916,7 @@ transition: transform 0.1s, filter 0.2s;
 }
 
   &-left {
-    left: 10px;
+    left: -12%;
 
     svg {
       transform: rotate(90deg);
@@ -911,7 +924,7 @@ transition: transform 0.1s, filter 0.2s;
   }
 
   &-right {
-    right: 10px;
+    right: -12%;
 
     svg {
       transform: rotate(-90deg);
@@ -921,8 +934,16 @@ transition: transform 0.1s, filter 0.2s;
 
 .dot {
   &-wrapper {
-    // position: absolute;
-    // bottom: 0;
+    position: absolute;
+    // before breakpoint
+    @media (max-width: $bp - 1) {
+      bottom: -4rem;
+    }
+
+    // after breakpoint
+    @media (min-width: $bp) {
+      bottom: -3rem;
+    }
     display: flex;
     justify-content: center;
     width: 100%;
@@ -931,9 +952,20 @@ transition: transform 0.1s, filter 0.2s;
   background: var(--cblue);
   border-radius: 50%;
   cursor: pointer;
-  height: 1rem;
-  width: 1rem;
-  margin: 1rem 0.3rem;
+  // before breakpoint
+  @media (max-width: $bp - 1) {
+    height: 2rem;
+    width: 2rem;
+    margin: 1rem 0.7rem;
+  }
+
+  // after breakpoint
+  @media (min-width: $bp) {
+    height: 1rem;
+    width: 1rem;
+    margin: 1rem 0.3rem;
+  }
+
   opacity: 0.5;
   -webkit-transition: 0.2s;
   transition: 0.2s;
@@ -947,28 +979,80 @@ transition: transform 0.1s, filter 0.2s;
   }
 }
 
+.content--p {
+  position: relative;
+}
+
+.section--p {
+  margin: 0 10px;
+}
+
 .project {
   &--container {
     width: 100%;
-    overflow: hidden;
-
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 100%;
     grid-gap: 1rem;
+    position: relative;
+    transition: left 1s;
+
+    &--wrapper {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &--absolute {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    padding-top: 1080 / 1920 * 100%;
+    z-index: 100;
   }
 
   display: grid;
   grid-gap: 1rem;
+  padding: 2%;
+
+  // before breakpoint
+  @media (max-width: $bp - 1) {
   grid-template-areas:
-  "pimage pimage"
-  "plink ptext";
+  "pimage"
+  "ptext"
+  "plink";
+  }
+
+  // after breakpoint
+  @media (min-width: $bp) {
+    grid-template-columns: 2fr 8fr;
+    grid-template-areas:
+    "pimage pimage"
+    "plink ptext";
+  }
 
   &--image-wrapper {
     grid-area: pimage;
+    width: 100%;
+    height: 0;
+    padding-top: 1080 / 1920 * 100%;
+    position: relative;
+    overflow: hidden;
+    // before breakpoint
+    @media (max-width: $bp - 1) {
+      margin-bottom: 3rem;
+    }
+
+    // after breakpoint
+    @media (min-width: $bp) {
+      margin-bottom: 2rem;
+    }
   }
 
   &--image {
+    position: absolute;
+    top: 0;
+    z-index: -1;
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -978,14 +1062,47 @@ transition: transform 0.1s, filter 0.2s;
     grid-area: ptext;
   }
 
-  &--links {
-    grid-area: plink;
+  &--name {
+    @include font(subheader, 800, black);
   }
 
+  &--description {
+    @include font(default, 400, black);
+  }
+
+  &--links {
+    grid-area: plink;
+    display: flex;
+
+    // before breakpoint
+    @media (max-width: $bp - 1) {
+
+    }
+
+    // after breakpoint
+    @media (min-width: $bp) {
+    flex-direction: column;
+    }
+  }
+
+  // &--link {
+  // }
+
   @at-root .secondary {
+    // before breakpoint
+    @media (max-width: $bp - 1) {
+      margin: 0 1rem;
+    }
+
+    // after breakpoint
+    @media (min-width: $bp) {
+      margin: 1rem 0;
+    }
+    text-align: center;
     background: none;
     border: 3px solid var(--cyellow);
     box-shadow: none;
+    white-space: initial;
   }
 
 }
