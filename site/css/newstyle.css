@@ -987,3 +987,126 @@ button:focus {
   -webkit-transform: rotate(0deg);
           transform: rotate(0deg);
 }
+
+/* Project Page */
+.arrow {
+  width: 5rem;
+  height: 5rem;
+  background: none;
+  fill: var(--cblue);
+  -webkit-transition: -webkit-transform 0.1s, -webkit-filter 0.2s;
+  transition: -webkit-transform 0.1s, -webkit-filter 0.2s;
+  transition: transform 0.1s, filter 0.2s;
+  transition: transform 0.1s, filter 0.2s, -webkit-transform 0.1s, -webkit-filter 0.2s;
+}
+
+.arrow:hover {
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  -webkit-filter: brightness(1.05);
+          filter: brightness(1.05);
+}
+
+.arrow:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-filter: brightness(0.9);
+          filter: brightness(0.9);
+}
+
+.arrow-left {
+  left: 10px;
+}
+
+.arrow-left svg {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.arrow-right {
+  right: 10px;
+}
+
+.arrow-right svg {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.dot {
+  background: var(--cblue);
+  border-radius: 50%;
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+  margin: 1rem 0.3rem;
+  opacity: 0.5;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.dot-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.dot.active, .dot:hover {
+  opacity: 0.8;
+  outline: none;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.project {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 1rem;
+      grid-template-areas: "pimage pimage" "plink ptext";
+}
+
+.project--container {
+  width: 100%;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  grid-gap: 1rem;
+}
+
+.project--image-wrapper {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: pimage;
+}
+
+.project--image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.project--text {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: ptext;
+}
+
+.project--links {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: plink;
+}
+
+.secondary {
+  background: none;
+  border: 3px solid var(--cyellow);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
