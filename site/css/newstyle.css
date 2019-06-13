@@ -185,7 +185,7 @@ button:focus {
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr;
       grid-template-columns: 1fr 10fr 1fr;
-      grid-template-areas: "h h h" ". c .";
+      grid-template-areas: "h h h" ". c .";
 }
 
 .section--h {
@@ -409,7 +409,7 @@ button:focus {
 
 @media (min-width: 830px) {
   .content--h {
-        grid-template-areas: "image title ." "image cta .";
+        grid-template-areas: "image title ." "image cta .";
   }
 }
 
@@ -710,7 +710,7 @@ button:focus {
 /* Work section start */
 @media (max-width: 829px) {
   .content--ma {
-        grid-template-areas: "projects" "links";
+        grid-template-areas: "projects" "links";
   }
 }
 
@@ -881,13 +881,13 @@ button:focus {
 /* Kontakt section start */
 @media (max-width: 829px) {
   .content--k {
-        grid-template-areas: "extra" "." "sh" "form";
+        grid-template-areas: "extra" "." "sh" "form";
   }
 }
 
 @media (min-width: 830px) {
   .content--k {
-        grid-template-areas: "sh sh" "form extra";
+        grid-template-areas: "sh sh" "form extra";
   }
 }
 
@@ -1082,9 +1082,9 @@ button:focus {
 
 @media (max-width: 829px) {
   .dot {
-    height: 2rem;
-    width: 2rem;
-    margin: 1rem 0.7rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin: 1rem 0.5rem;
   }
 }
 
@@ -1131,7 +1131,6 @@ button:focus {
 }
 
 .project--container--wrapper {
-  width: 100%;
   overflow: hidden;
 }
 
@@ -1145,7 +1144,7 @@ button:focus {
 
 @media (max-width: 829px) {
   .project {
-        grid-template-areas: "pimage" "ptext" "plink";
+        grid-template-areas: "pimage" "ptext" "plink";
   }
 }
 
@@ -1153,7 +1152,7 @@ button:focus {
   .project {
     -ms-grid-columns: 2fr 8fr;
         grid-template-columns: 2fr 8fr;
-        grid-template-areas: "pimage pimage" "plink ptext";
+        grid-template-areas: "pimage pimage" "plink ptext";
   }
 }
 

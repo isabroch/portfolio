@@ -8,10 +8,16 @@ if (document.querySelector('#typed-strings')) {
   });
 }
 
+// Get url
+let urlPath = window.location.pathname;
+// Get everything from the last slash to the end (filename)
+let urlPathString = urlPath.substring(urlPath.lastIndexOf("/"));
+// Console should log '/index.html' or '/'
+// console.log(urlPathString);
 
-let index = false;
+if (urlPathString == '/index.html' || urlPathString == '/') {
+  console.log('You are on the homepage');
 
-if (index) {
   // Having issues???
   // // Isotope sorting
   // var $isoGrid = $('.work--projects').isotope({
@@ -82,8 +88,7 @@ if (index) {
   })
 }
 
-
-// For project page, scrolling to side
+let projectNumber;
 const projectArray = [
   '1950s',
   'om_verden',
@@ -92,14 +97,95 @@ const projectArray = [
   'national_graphic',
   'rfa_party',
   'mediegrafiker_exam',
-  'hundlufter'
+  'hundelufter'
 ]
 
-let projectNumber = window.location.search || 0;
-console.log(projectNumber);
+if (urlPathString == '/project.html') {
+  console.log('You are on the project page!');
 
-if (projectNumber != 0) {
 
+  // Get linked project from ?value in url
+  let projectString = window.location.search.substring(1);
+
+  // If it's a string, figure out its index number
+  if (projectArray.indexOf(projectString) != -1) {
+    projectNumber = projectArray.indexOf(projectString);
+  } else {
+    projectNumber = 0;
+  }
+
+  console.log(projectNumber);
+
+  // Turn off transition for page load, gets reset by the next line. Small timeout is used to prevent transition on page load.
+  const container = document.querySelector('.project--container');
+  container.style = `transition: left 0s`;
+  setTimeout(() => {
+    movePage(projectNumber);
+  }, 10);
+
+
+  document.querySelector('.arrow-left')
+    .addEventListener('click', () => {
+      changeIndex(-1);
+    });
+
+  document.querySelector('.arrow-right')
+    .addEventListener('click', () => {
+      changeIndex(+1);
+    });
+
+  window.addEventListener('keydown', function(e) {
+    switch (e.key) {
+      case 'ArrowLeft':
+        changeIndex(-1);
+        break;
+      case 'ArrowRight':
+        changeIndex(+1);
+        break;
+    }
+  })
+
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach(dot => {
+      dot.addEventListener('click', function() {
+        changeIndex([...dots].indexOf(this), true);
+      })
+    });
 }
 
-console.log(projectNumber);
+// Function that increases or decreases, or takes in an index
+function changeIndex(number, isIndex = false) {
+
+  if (isIndex) {
+    // If given an index number, change projectNumber to index number.
+    projectNumber = number;
+  } else {
+    // If given -1 or +1, add to the projectNumber.
+    projectNumber += number;
+
+    // If hitting minimum/max of the array, loop around.
+    if (projectNumber > projectArray.length - 1) {
+      projectNumber = 0;
+    } else if (projectNumber < 0) {
+      projectNumber = projectArray.length - 1;
+    }
+  }
+
+  movePage(projectNumber);
+}
+
+function movePage(index) {
+  const container = document.querySelector('.project--container');
+  let leftStyle = `left: calc((100% + 1rem) * -${index})`;
+  container.style = leftStyle;
+
+  const dotsArray = document.querySelectorAll('.dot');
+  dotsArray.forEach(dot => {
+    dot.classList.remove('active');
+  });
+
+  dotsArray[index].classList.add('active');
+
+  let projectName = projectArray[index];
+  window.history.replaceState({}, projectName, `/site/project.html?${projectName}`);
+}
