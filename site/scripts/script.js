@@ -6,6 +6,27 @@ var typed = new Typed('#typed', {
   backDelay: 500,
 });
 
+
+// Having issues???
+// // Isotope sorting
+// var $isoGrid = $('.work--projects').isotope({
+//   // options
+//   itemSelector: '.work--project',
+//   layoutMode: 'fitRows'
+// });
+
+// const sortButtons = document.querySelectorAll('.filter--button');
+// sortButtons.forEach(function (button) {
+//     button.addEventListener('click', function() {
+//       let filterValue = this.dataset.filter;
+//       console.log(filterValue);
+//     $isoGrid.isotope({
+//       filter: filterValue
+//     })
+//   });
+// });
+
+
 // For skills bar animation
 const skillsArray = document.querySelectorAll('.skill');
 const skillWrapper = document.querySelector('.skill--wrapper');
@@ -36,8 +57,21 @@ let observer = new IntersectionObserver((entries, observer) => {
 
 observer.observe(skillWrapper);
 
-// If viewport is $bp: 830px; or less, then show only 4 projects first
-if(window.innerWidth <= 830) {
-  const projects = document.querySelector('.work--projects');
-  projects.classList.toggle('limited');
-}
+document.querySelectorAll('.readmore--button').forEach((button) => {
+  button.addEventListener('click', () => {
+    const buttonText = button.querySelector('.readmore--button--text--wrapper');
+
+    console.log(buttonText);
+
+    if (button.classList.contains('om-mig--readmore')) {
+      const content = document.querySelector('.readmore--text');
+      content.classList.toggle('hiding');
+
+      if (content.classList.contains('hiding')) {
+        buttonText.textContent = 'Read more';
+      } else {
+        buttonText.textContent = 'Read less';
+      }
+    }
+  })
+})
