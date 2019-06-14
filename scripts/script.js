@@ -243,5 +243,8 @@ function movePage(index) {
   dotsArray[index].classList.add('active');
 
   let projectName = projectArray[index];
-  window.history.replaceState({}, projectName, `/site/project.html?${projectName}`);
+  let baseURL = window.location.pathname;
+
+  // Replaces URL in bar to the current project viewed
+  window.history.replaceState({}, projectName, `${baseURL}?${projectName}`);
 }
