@@ -185,7 +185,7 @@ button:focus {
   display: grid;
   -ms-grid-columns: 1fr 10fr 1fr;
       grid-template-columns: 1fr 10fr 1fr;
-      grid-template-areas: "h h h" ". c .";
+      grid-template-areas: "h h h" ". c .";
 }
 
 .section--h {
@@ -313,6 +313,18 @@ button:focus {
           transform: scale(0.98);
 }
 
+.cta.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.cta.disabled:hover, .cta.disabled:active, .cta.disabled:focus {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+}
+
 /* Links */
 .link {
   font-size: var(--fdefault);
@@ -392,11 +404,11 @@ button:focus {
   }
 }
 
-.content:not(.content--h) p {
+.content--om p {
   margin: 0.5em 0;
 }
 
-.content:not(.content--h) p:last-child {
+.content--om p:last-child {
   margin-bottom: 1.25em;
 }
 
@@ -409,7 +421,7 @@ button:focus {
 
 @media (min-width: 830px) {
   .content--h {
-        grid-template-areas: "image title ." "image cta .";
+        grid-template-areas: "image title ." "image cta .";
   }
 }
 
@@ -548,7 +560,6 @@ button:focus {
 }
 
 .hero-extra {
-  margin-right: 10px;
   padding: 5px 0;
 }
 
@@ -557,6 +568,7 @@ button:focus {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
+    margin-right: 20px;
   }
 }
 
@@ -710,7 +722,7 @@ button:focus {
 /* Work section start */
 @media (max-width: 829px) {
   .content--ma {
-        grid-template-areas: "projects" "links";
+        grid-template-areas: "projects" "links";
   }
 }
 
@@ -827,6 +839,7 @@ button:focus {
   position: relative;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 2px 2px 1px var(--cyellow);
   z-index: 10;
 }
 
@@ -881,13 +894,13 @@ button:focus {
 /* Kontakt section start */
 @media (max-width: 829px) {
   .content--k {
-        grid-template-areas: "extra" "." "sh" "form";
+        grid-template-areas: "extra" "." "sh" "form";
   }
 }
 
 @media (min-width: 830px) {
   .content--k {
-        grid-template-areas: "sh sh" "form extra";
+        grid-template-areas: "sh sh" "form extra";
   }
 }
 
@@ -908,6 +921,8 @@ button:focus {
   background: var(--cyellow);
   border-radius: var(--bradius);
   padding: 5px 10px;
+  position: relative;
+  overflow: hidden;
 }
 
 .kontakt--form input,
@@ -975,6 +990,29 @@ button:focus {
     font-weight: 500;
     color: var(--cblack);
   }
+}
+
+.form--popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--cyellow);
+  top: 0;
+  left: 0;
+  border-radius: var(--bradius);
+  padding: 0.5em 1em;
+  margin: 0;
+  -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.86, 0, 0.12, 1.24);
+  transition: -webkit-transform 0.7s cubic-bezier(0.86, 0, 0.12, 1.24);
+  transition: transform 0.7s cubic-bezier(0.86, 0, 0.12, 1.24);
+  transition: transform 0.7s cubic-bezier(0.86, 0, 0.12, 1.24), -webkit-transform 0.7s cubic-bezier(0.86, 0, 0.12, 1.24);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.done .form--popup {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 /* Kontakt section end */
@@ -1070,13 +1108,13 @@ button:focus {
 
 @media (max-width: 829px) {
   .dot-wrapper {
-    bottom: -4rem;
+    bottom: -3.5rem;
   }
 }
 
 @media (min-width: 830px) {
   .dot-wrapper {
-    bottom: -3rem;
+    bottom: -2.4rem;
   }
 }
 
@@ -1116,6 +1154,9 @@ button:focus {
   display: grid;
   grid-gap: 1rem;
   padding: 2%;
+  -ms-grid-rows: max-content;
+      grid-template-rows: -webkit-max-content;
+      grid-template-rows: max-content;
 }
 
 .project--container {
@@ -1126,8 +1167,10 @@ button:focus {
   grid-auto-columns: 100%;
   grid-gap: 1rem;
   position: relative;
-  -webkit-transition: left 1s;
-  transition: left 1s;
+  -webkit-transition: -webkit-transform 1s;
+  transition: -webkit-transform 1s;
+  transition: transform 1s;
+  transition: transform 1s, -webkit-transform 1s;
 }
 
 .project--container--wrapper {
@@ -1144,7 +1187,7 @@ button:focus {
 
 @media (max-width: 829px) {
   .project {
-        grid-template-areas: "pimage" "ptext" "plink";
+        grid-template-areas: "pimage" "ptext" "plink";
   }
 }
 
@@ -1152,7 +1195,7 @@ button:focus {
   .project {
     -ms-grid-columns: 2fr 8fr;
         grid-template-columns: 2fr 8fr;
-        grid-template-areas: "pimage pimage" "plink ptext";
+        grid-template-areas: "pimage pimage" "plink ptext";
   }
 }
 
@@ -1163,6 +1206,8 @@ button:focus {
   padding-top: 56.25%;
   position: relative;
   overflow: hidden;
+  -webkit-filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.3));
 }
 
 @media (max-width: 829px) {
@@ -1208,6 +1253,9 @@ button:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 @media (min-width: 830px) {
@@ -1222,9 +1270,8 @@ button:focus {
 .secondary {
   text-align: center;
   background: none;
-  border: 3px solid var(--cyellow);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  -webkit-box-shadow: inset 0 0 0 3px var(--cyellow);
+          box-shadow: inset 0 0 0 3px var(--cyellow);
   white-space: initial;
 }
 
@@ -1238,4 +1285,8 @@ button:focus {
   .secondary {
     margin: 1rem 0;
   }
+}
+
+.extraspace {
+  margin-top: 0.5em;
 }

@@ -11,9 +11,7 @@
 
   <!-- Resources like fonts/icons, jquery -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,700,700i&display=swap" rel="stylesheet"> <!-- Monstserrat font -->
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> jQuery -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script> <!-- Typed.js library for typing effect, from https://mattboldt.com/demos/typed-js/ -->
-  <!-- <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script> Isotope library for sorting, from https://isotope.metafizzy.co/ -->
 
   <script src="scripts/script.js" defer></script> <!-- Own script -->
 
@@ -173,7 +171,7 @@
           <div class="work--project--wrapper">
             <h2 class="work--project--name">1950'er</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-1950.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
@@ -181,7 +179,7 @@
           <div class="work--project--wrapper">
             <h2 class="work--project--name">Om Verden</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-omv.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
@@ -189,7 +187,7 @@
           <div class="work--project--wrapper">
             <h2 class="work--project--name">Moana Fanside</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-moa.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
@@ -197,23 +195,23 @@
           <div class="work--project--wrapper">
             <h2 class="work--project--name">Krigsmuseet</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-krig.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
         <a class="work--project a" href="project.html?national_graphic">
-            <div class="work--project--wrapper">
-              <h2 class="work--project--name">National Graphic</h2>
-              <div class="work--project--image--wrapper">
-                <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
-              </div>
+          <div class="work--project--wrapper">
+            <h2 class="work--project--name">National Graphic</h2>
+            <div class="work--project--image--wrapper">
+              <img src="resources/thumbnail-ng.jpg" alt="" class="work--project--image">
             </div>
-          </a>
+          </div>
+        </a>
         <a class="work--project a" href="project.html?rfa_party">
           <div class="work--project--wrapper">
             <h2 class="work--project--name">RFA Party</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-rfa.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
@@ -221,7 +219,7 @@
           <div class="work--project--wrapper">
             <h2 class="work--project--name">MG Exam</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-mg.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
@@ -229,7 +227,7 @@
           <div class="work--project--wrapper">
             <h2 class="work--project--name">Hundelufter</h2>
             <div class="work--project--image--wrapper">
-              <img src="http://placekitten.com/1920/1080" alt="" class="work--project--image">
+              <img src="resources/thumbnail-hundeluft.jpg" alt="" class="work--project--image">
             </div>
           </div>
         </a>
@@ -245,7 +243,7 @@
     <h1 class="header">Kontakt</h1>
     <div class="content content--k">
       <div class="kontakt--extra">
-        <p>Ville du gerne høre mere? Enten brug formular til sende besked eller kontakt mig på den følgende...</p>
+        <p class="extraspace">Ville du gerne høre mere? Enten brug formular til sende besked eller kontakt mig på den følgende...</p>
         <a href="mailto:isabrochweb@gmail.com" class="link link--icon-text">
           <svg height="24" role="img" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <title>Email</title>
@@ -271,7 +269,7 @@
       </div>
 
       <h2 class="kontakt--subheader subheader">Send mig besked</h2>
-      <form action="" class="kontakt--form">
+      <form action="" class="kontakt--form" method="POST">
         <input type="text" name="name" placeholder="Navn">
         <input type="text" name="email" placeholder="Email">
         <textarea name="message" rows="8" placeholder="Besked"></textarea>
@@ -279,6 +277,8 @@
           <!-- Error message here, please -->
         </p>
         <button class="cta cta--blue">Send</button>
+
+        <p class="form--popup">Tak for din besked, $NAVN! Jeg skriver tilbage til $EMAIL så snart jeg kan.</p>
       </form>
     </div>
   </section>

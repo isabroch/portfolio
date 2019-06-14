@@ -215,6 +215,16 @@ button {
       transform: scale(0.98);
     }
   }
+
+  &.disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+
+    &:hover, &:active, &:focus {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+  }
 }
 
 /* Links */
@@ -291,7 +301,7 @@ button {
     }
   }
 
-  &:not(.content--h) p {
+  &--om p {
     margin: 0.5em 0;
 
     &:last-child {
@@ -425,9 +435,8 @@ button {
     // after breakpoint
     @media (min-width: $bp) {
       order: 1;
+      margin-right: 20px;
     }
-
-    margin-right: 10px;
     padding: 5px 0;
   }
 
@@ -693,6 +702,7 @@ button {
       position: relative;
       text-align: center;
       text-transform: uppercase;
+      text-shadow: 2px 2px 1px var(--cyellow);
 
       // before breakpoint
       @media (max-width: $bp - 1) {
@@ -821,6 +831,8 @@ button {
     background: var(--cyellow);
     border-radius: var(--bradius);
     padding: 5px 10px;
+    position: relative;
+    overflow: hidden;
 
     input,
     textarea {
@@ -868,6 +880,24 @@ button {
   }
 }
 
+.form--popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--cyellow);
+  top: 0;
+  left: 0;
+  border-radius: var(--bradius);
+  padding: 0.5em 1em;
+  margin: 0;
+  transition: transform 0.7s cubic-bezier(.86,0,.12,1.24);
+  transform: translateY(100%);
+
+  .done & {
+    transform: translateY(0%);
+  }
+}
+
 /* Kontakt section end */
 
 
@@ -886,34 +916,36 @@ button {
 /* Project Page */
 
 .arrow {
-position: absolute;
+  position: absolute;
 
-// before breakpoint
-@media (max-width: $bp - 1) {
-  width: 8rem;
-  height: 8rem;
-  top: calc(50% - 4rem);
-}
+  // before breakpoint
+  @media (max-width: $bp - 1) {
+    width: 8rem;
+    height: 8rem;
+    top: calc(50% - 4rem);
+  }
 
-// after breakpoint
-@media (min-width: $bp) {
-  width: 5rem;
-  height: 5rem;
-  top: calc(50% - 2rem);
-}
-background: none;
-fill: var(--cblue);
-transition: transform 0.1s, filter 0.2s;
+  // after breakpoint
+  @media (min-width: $bp) {
+    width: 5rem;
+    height: 5rem;
+    top: calc(50% - 2rem);
+  }
 
-&:hover {
-  transform: scale(1.15);
-  filter: brightness(1.05);
-}
+  background: none;
+  fill: var(--cblue);
+  transition: transform 0.1s,
+  filter 0.2s;
 
-&:active {
-  transform: scale(0.95);
-  filter: brightness(0.9);
-}
+  &:hover {
+    transform: scale(1.15);
+    filter: brightness(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
 
   &-left {
     left: -12%;
@@ -935,15 +967,17 @@ transition: transform 0.1s, filter 0.2s;
 .dot {
   &-wrapper {
     position: absolute;
+
     // before breakpoint
     @media (max-width: $bp - 1) {
-      bottom: -4rem;
+      bottom: -3.5rem;
     }
 
     // after breakpoint
     @media (min-width: $bp) {
-      bottom: -3rem;
+      bottom: -2.4rem;
     }
+
     display: flex;
     justify-content: center;
     width: 100%;
@@ -952,6 +986,7 @@ transition: transform 0.1s, filter 0.2s;
   background: var(--cblue);
   border-radius: 50%;
   cursor: pointer;
+
   // before breakpoint
   @media (max-width: $bp - 1) {
     height: 1.5rem;
@@ -995,7 +1030,7 @@ transition: transform 0.1s, filter 0.2s;
     grid-auto-columns: 100%;
     grid-gap: 1rem;
     position: relative;
-    transition: left 1s;
+    transition: transform 1s;
 
     &--wrapper {
       // width: 100%;
@@ -1015,20 +1050,22 @@ transition: transform 0.1s, filter 0.2s;
   grid-gap: 1rem;
   padding: 2%;
 
+  grid-template-rows: max-content;
+
   // before breakpoint
   @media (max-width: $bp - 1) {
-  grid-template-areas:
-  "pimage"
-  "ptext"
-  "plink";
+    grid-template-areas:
+      "pimage"
+      "ptext"
+      "plink";
   }
 
   // after breakpoint
   @media (min-width: $bp) {
     grid-template-columns: 2fr 8fr;
     grid-template-areas:
-    "pimage pimage"
-    "plink ptext";
+      "pimage pimage"
+      "plink ptext";
   }
 
   &--image-wrapper {
@@ -1038,6 +1075,8 @@ transition: transform 0.1s, filter 0.2s;
     padding-top: 1080 / 1920 * 100%;
     position: relative;
     overflow: hidden;
+    filter: drop-shadow(0 0 7px rgba(0,0,0,0.3));
+
     // before breakpoint
     @media (max-width: $bp - 1) {
       margin-bottom: 3rem;
@@ -1073,15 +1112,14 @@ transition: transform 0.1s, filter 0.2s;
   &--links {
     grid-area: plink;
     display: flex;
+    align-items: flex-start;
 
     // before breakpoint
-    @media (max-width: $bp - 1) {
-
-    }
+    @media (max-width: $bp - 1) {}
 
     // after breakpoint
     @media (min-width: $bp) {
-    flex-direction: column;
+      flex-direction: column;
     }
   }
 
@@ -1089,6 +1127,7 @@ transition: transform 0.1s, filter 0.2s;
   // }
 
   @at-root .secondary {
+
     // before breakpoint
     @media (max-width: $bp - 1) {
       margin: 0 1rem;
@@ -1098,11 +1137,15 @@ transition: transform 0.1s, filter 0.2s;
     @media (min-width: $bp) {
       margin: 1rem 0;
     }
+
     text-align: center;
     background: none;
-    border: 3px solid var(--cyellow);
-    box-shadow: none;
+    box-shadow: inset 0 0 0 3px var(--cyellow);
     white-space: initial;
   }
 
+}
+
+.extraspace {
+  margin-top: 0.5em;
 }

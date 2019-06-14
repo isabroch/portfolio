@@ -18,6 +18,51 @@ let urlPathString = urlPath.substring(urlPath.lastIndexOf("/"));
 if (urlPathString == '/index.html' || urlPathString == '/') {
   console.log('You are on the homepage');
 
+  // Form validation + thank you popup
+const contactForm = document.forms[0];
+
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const popup = this.querySelector('.form--popup');
+  const errorDiv = this.querySelector('.form--error');
+
+  const name = this.name.value;
+  const email = this.email.value;
+  const message = this.message.value;
+
+  let errorMessage;
+
+  if ( name == '' || !/\S/.test(name) ) {
+    this.name.focus();
+    errorMessage = 'Skrive dit navn, tak!';
+  } else if (email == '' || !/\S/.test(email) ) {
+    this.email.focus();
+    errorMessage = 'Skrive din email, tak!';
+  } else if (email.match(/@/g) == null) {
+    this.email.focus();
+    errorMessage = 'Mangler @';
+  } else if (email.match(/\S@/) == null) {
+    this.email.focus();
+    errorMessage = 'Mangler del før @';
+  } else if (email.match(/@\S/) == null) {
+    this.email.focus();
+    errorMessage = 'Mangler del efter @';
+  } else if (email.match(/[^@]\..+$/) == null) {
+    this.email.focus();
+    errorMessage = 'Mangler sidste del (f.eks. .com, .net)';
+  } else if ( message == '' || !/\S/.test(message) ) {
+    this.message.focus();
+    errorMessage = 'Skrive en besked, tak!';
+  } else {
+    popup.innerHTML = `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`
+    this.classList.add('done');
+    return true;
+  }
+
+  errorDiv.textContent = errorMessage;
+});
+
   // Having issues???
   // // Isotope sorting
   // var $isoGrid = $('.work--projects').isotope({
@@ -103,6 +148,13 @@ const projectArray = [
 if (urlPathString == '/project.html') {
   console.log('You are on the project page!');
 
+  // Prevent clicking on disabled links
+document.querySelectorAll('.disabled').forEach(function (item) {
+  item.addEventListener('click', function (e) {
+    e.preventDefault();
+  })
+});
+
 
   // Get linked project from ?value in url
   let projectString = window.location.search.substring(1);
@@ -118,10 +170,14 @@ if (urlPathString == '/project.html') {
 
   // Turn off transition for page load, gets reset by the next line. Small timeout is used to prevent transition on page load.
   const container = document.querySelector('.project--container');
-  container.style = `transition: left 0s`;
+  container.style.transition = `all 0s`;
   setTimeout(() => {
     movePage(projectNumber);
-  }, 10);
+  }, 20);
+  setTimeout(() => {
+    container.style.transition = ``;
+  }, 1000);
+
 
 
   document.querySelector('.arrow-left')
@@ -176,8 +232,8 @@ function changeIndex(number, isIndex = false) {
 
 function movePage(index) {
   const container = document.querySelector('.project--container');
-  let leftStyle = `left: calc((100% + 1rem) * -${index})`;
-  container.style = leftStyle;
+  let stylemove = `translateX(calc((100% + 1rem) * -${index}))`;
+  container.style.transform = stylemove;
 
   const dotsArray = document.querySelectorAll('.dot');
   dotsArray.forEach(dot => {
