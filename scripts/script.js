@@ -19,49 +19,58 @@ if (urlPathString == '/index.html' || urlPathString == '/') {
   console.log('You are on the homepage');
 
   // Form validation + thank you popup
-const contactForm = document.forms[0];
+  const contactForm = document.forms[0];
 
-contactForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
-  const popup = this.querySelector('.form--popup');
-  const errorDiv = this.querySelector('.form--error');
+    const popup = this.querySelector('.form--popup');
+    const errorDiv = this.querySelector('.form--error');
 
-  const name = this.name.value;
-  const email = this.email.value;
-  const message = this.message.value;
+    const name = this.name.value;
+    const email = this.email.value;
+    const message = this.message.value;
 
-  let errorMessage;
+    let errorMessage;
 
-  if ( name == '' || !/\S/.test(name) ) {
-    this.name.focus();
-    errorMessage = 'Skrive dit navn, tak!';
-  } else if (email == '' || !/\S/.test(email) ) {
-    this.email.focus();
-    errorMessage = 'Skrive din email, tak!';
-  } else if (email.match(/@/g) == null) {
-    this.email.focus();
-    errorMessage = 'Mangler @';
-  } else if (email.match(/\S@/) == null) {
-    this.email.focus();
-    errorMessage = 'Mangler del før @';
-  } else if (email.match(/@\S/) == null) {
-    this.email.focus();
-    errorMessage = 'Mangler del efter @';
-  } else if (email.match(/[^@]\..+$/) == null) {
-    this.email.focus();
-    errorMessage = 'Mangler sidste del (f.eks. .com, .net)';
-  } else if ( message == '' || !/\S/.test(message) ) {
-    this.message.focus();
-    errorMessage = 'Skrive en besked, tak!';
-  } else {
-    popup.innerHTML = `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`
-    this.classList.add('done');
-    return true;
-  }
+    if (name == '' || !/\S/.test(name)) {
+      this.name.focus();
+      errorMessage = 'Skrive dit navn, tak!';
+    } else if (email == '' || !/\S/.test(email)) {
+      this.email.focus();
+      errorMessage = 'Skrive din email, tak!';
+    } else if (email.match(/@/g) == null) {
+      this.email.focus();
+      errorMessage = 'Mangler @';
+    } else if (email.match(/\S@/) == null) {
+      this.email.focus();
+      errorMessage = 'Mangler del før @';
+    } else if (email.match(/@\S/) == null) {
+      this.email.focus();
+      errorMessage = 'Mangler del efter @';
+    } else if (email.match(/[^@]\..+$/) == null) {
+      this.email.focus();
+      errorMessage = 'Mangler sidste del (f.eks. .com, .net)';
+    } else if (message == '' || !/\S/.test(message)) {
+      this.message.focus();
+      errorMessage = 'Skrive en besked, tak!';
+    } else {
+      $.ajax({
+        url: "https://formsubmit.co/ajax/isabrochweb@gmail.com",
+        method: "POST",
+        data: {name: name,
+          email: email,
+          message: message,
+          _template: this._template.value}
+        });
+      popup.innerHTML = `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`
+      this.classList.add('done');
+      return true;
+    }
 
-  errorDiv.textContent = errorMessage;
-});
+    errorDiv.textContent = errorMessage;
+  });
+
 
   // Having issues???
   // // Isotope sorting
@@ -149,11 +158,11 @@ if (urlPathString == '/project.html') {
   console.log('You are on the project page!');
 
   // Prevent clicking on disabled links
-document.querySelectorAll('.disabled').forEach(function (item) {
-  item.addEventListener('click', function (e) {
-    e.preventDefault();
-  })
-});
+  document.querySelectorAll('.disabled').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+    })
+  });
 
 
   // Get linked project from ?value in url
@@ -190,7 +199,7 @@ document.querySelectorAll('.disabled').forEach(function (item) {
       changeIndex(+1);
     });
 
-  window.addEventListener('keydown', function(e) {
+  window.addEventListener('keydown', function (e) {
     switch (e.key) {
       case 'ArrowLeft':
         changeIndex(-1);
@@ -203,10 +212,10 @@ document.querySelectorAll('.disabled').forEach(function (item) {
 
   const dots = document.querySelectorAll('.dot');
   dots.forEach(dot => {
-      dot.addEventListener('click', function() {
-        changeIndex([...dots].indexOf(this), true);
-      })
-    });
+    dot.addEventListener('click', function () {
+      changeIndex([...dots].indexOf(this), true);
+    })
+  });
 }
 
 // Function that increases or decreases, or takes in an index

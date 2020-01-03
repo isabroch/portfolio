@@ -12,7 +12,10 @@
   <!-- Resources like fonts/icons, jquery -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,700,700i&display=swap" rel="stylesheet"> <!-- Monstserrat font -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script> <!-- Typed.js library for typing effect, from https://mattboldt.com/demos/typed-js/ -->
-
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
   <script src="scripts/script.js" defer></script> <!-- Own script -->
 
   <!-- CSS stylesheet -->
@@ -82,7 +85,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewbox="0 0 24 24">
               <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
               <path fill="none" d="M0 0h24v24H0V0z" /></svg>
-            </span>
+          </span>
         </button>
       </section>
 
@@ -270,14 +273,17 @@
       </div>
 
       <h2 class="kontakt--subheader subheader">Send mig besked</h2>
-      <form action="#" class="kontakt--form gform" method="POST" action="https://script.google.com/macros/s/AKfycbyfPkV9CcUXKW1eG8gJmU21ZM95B9hnSJZ59wuJ0w/exec">
-        <input type="text" name="name" placeholder="Navn">
-        <input type="text" name="email" placeholder="Email">
-        <textarea name="message" rows="8" placeholder="Besked"></textarea>
-        <p class="form--error">
-          <!-- Error message here, please -->
-        </p>
-        <button class="cta cta--blue">Send</button>
+      <form class="kontakt--form" method="POST" action="https://formsubmit.co/isabrochweb@gmail.com">
+        <div class="form-elements">
+          <input type="text" name="name" placeholder="Navn">
+          <input type="text" name="email" placeholder="Email">
+          <textarea name="message" rows="8" placeholder="Besked"></textarea>
+          <input type="hidden" name="_template" value="table">
+          <p class="form--error">
+            <!-- Error message here, please -->
+          </p>
+          <button type="submit" class="cta cta--blue">Send</button>
+        </div>
 
         <p class="form--popup">Tak for din besked, $NAVN! Jeg skriver tilbage til $EMAIL så snart jeg kan.</p>
       </form>
