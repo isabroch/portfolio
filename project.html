@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Meta tags like title, description, tags etc. -->
+    <title>Portfolio | Isabella Broch</title>
 
-  <!-- Meta tags like title, description, tags etc. -->
-  <title>Portfolio | Isabella Broch</title>
+    <!-- Resources like fonts/icons, jquery -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,700,700i&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Monstserrat font -->
 
-  <!-- Resources like fonts/icons, jquery -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,700,700i&display=swap" rel="stylesheet"> <!-- Monstserrat font -->
+    <script src="scripts/script.js" defer></script>
+    <!-- Own script -->
 
-  <script src="scripts/script.js" defer></script> <!-- Own script -->
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="css/newstyle.css" />
+  </head>
 
-  <!-- CSS stylesheet -->
-  <link rel="stylesheet" href="css/newstyle.css">
-</head>
-
-<body>
-  <div class="section section--p" id="project">
-    <div class="content content--p">
-      <!-- arrow left
+  <body>
+    <div class="section section--p" id="project">
+      <div class="content content--p">
+        <!-- arrow left
       arrow right
 
       img
@@ -32,121 +36,303 @@
       project title
       description -->
 
-      <div class="project--container--wrapper">
+        <div class="project--container--wrapper">
+          <div class="project--absolute">
+            <button class="arrow arrow-left">
+              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                <path
+                  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                />
+                <path fill="none" d="M0 0h24v24H0V0z" />
+              </svg>
+            </button>
 
-        <div class="project--absolute">
-          <button class="arrow arrow-left">
-            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
-              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-              <path fill="none" d="M0 0h24v24H0V0z" /></svg>
-          </button>
+            <button class="arrow arrow-right">
+              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                <path
+                  d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"
+                />
+                <path fill="none" d="M0 0h24v24H0V0z" />
+              </svg>
+            </button>
 
-          <button class="arrow arrow-right">
-            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
-              <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
-              <path fill="none" d="M0 0h24v24H0V0z" /></svg>
-          </button>
+            <ul class="dot-wrapper">
+              <li class="dot active"></li>
+              <li class="dot"></li>
+              <li class="dot"></li>
+              <li class="dot"></li>
+              <li class="dot"></li>
+              <li class="dot"></li>
+              <li class="dot"></li>
+              <li class="dot"></li>
+            </ul>
+          </div>
 
-          <ul class="dot-wrapper">
-            <li class="dot active"></li>
-            <li class="dot"></li>
-            <li class="dot"></li>
-            <li class="dot"></li>
-            <li class="dot"></li>
-            <li class="dot"></li>
-            <li class="dot"></li>
-            <li class="dot"></li>
-          </ul>
-        </div>
-
-        <div class="project--container" style="transform: translateX(calc((100% + 1rem) * 0));">
-
-          <section id="project1" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-1950.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">Om 1950'er</h1>
-              <div class="project--description">
-                <p>Vi haft en store gruppe projekt med andre discipliner som frisør, fotograf, mediegrafiker, FTP og TEA, hvor vi skal skabe nogle medie om et bestemt tiår. Vores var om de 50'er og vores design var meget inspiriret fra 50'er diner æstetisk. Der var en uge for hele projektet, med planlægning osv. Lavede i Sommer 2019.</p>
+          <div
+            class="project--container"
+            style="transform: translateX(calc((100% + 1rem) * 0));"
+          >
+            <section id="project1" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-1950.jpg"
+                  alt=""
+                  class="project--image"
+                />
               </div>
-            </div>
-            <div class="project--links"><a href="http://grafisk.nextkbh.dk/elever/isab7099/nextweek/" target="blank" class="project--link cta">Demo</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project2" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-omv.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">Om Verden</h1>
-              <div class="project--description">
-                <p>En samarbejdelse med NEXT's mediegrafiker elever. De skulle lave en kampagne produkt og en design til websiden. Vi haft en uge for kodning. Lavede i Forår 2019.</p>
+              <div class="project--text">
+                <h1 class="project--name">Om 1950'er</h1>
+                <div class="project--description">
+                  <p>
+                    Vi haft en store gruppe projekt med andre discipliner som
+                    frisør, fotograf, mediegrafiker, FTP og TEA, hvor vi skal
+                    skabe nogle medie om et bestemt tiår. Vores var om de 50'er
+                    og vores design var meget inspiriret fra 50'er diner
+                    æstetisk. Der var en uge for hele projektet, med planlægning
+                    osv. Lavede i Sommer 2019.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="project--links"><a href="http://grafisk.nextkbh.dk/elever/isab7099/omv/" target="blank" class="project--link cta">Demo</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project3" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-moa.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">Moana Fanside</h1>
-              <div class="project--description">
-                <p>Vi skulle lave en fanside om en film vi selv bestemmer. Jeg valgt Moana med ideen at siden var primært marketing til yngre piger. Der var lidt under 2 uge til design og kode. Lavede i Forår 2019.</p>
+              <div class="project--links">
+                <a
+                  href="http://grafisk.nextkbh.dk/elever/isab7099/nextweek/"
+                  target="blank"
+                  class="project--link cta"
+                  >Demo</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
               </div>
-            </div>
-            <div class="project--links"><a href="http://grafisk.nextkbh.dk/elever/isab7099/moana/" target="blank" class="project--link cta">Demo</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project4" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-krig.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">Krigsmuseet</h1>
-              <div class="project--description">
-                <p>En projekt fra min mediegrafiker grundforløbet, hvor vi skal design og udvikle en plakat og mobil-webside til Krigsmuseet. Lavede i Sommer 2018.</p>
+            </section>
+            <section id="project2" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-omv.jpg"
+                  alt=""
+                  class="project--image"
+                />
               </div>
-            </div>
-            <div class="project--links"><a href="http://grafisk.nextkbh.dk/elever/isab7099/krigsmuseet/" target="blank" class="project--link cta">Demo</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project5" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-ng.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">National Graphic</h1>
-              <div class="project--description">
-                <p>En projekt fra min mediegrafiker grundforløbet, hvor vi designer en avis og webside til avisen. Ingen af de skrivet content er min. Lavede i Efterår 2018.</p>
+              <div class="project--text">
+                <h1 class="project--name">Om Verden</h1>
+                <div class="project--description">
+                  <p>
+                    En samarbejdelse med NEXT's mediegrafiker elever. De skulle
+                    lave en kampagne produkt og en design til websiden. Vi haft
+                    en uge for kodning. Lavede i Forår 2019.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="project--links"><a href="http://grafisk.nextkbh.dk/elever/isab7099/thenationalgraphic/" target="blank" class="project--link cta">Demo</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project6" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-rfa.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">RFA Party</h1>
-              <div class="project--description">
-                <p>En mockup og design af invitering til en fest hostet af 'RFA'. Inspirationen var zodiac og astrologi. Lavede i Winter 2016.</p>
+              <div class="project--links">
+                <a
+                  href="http://grafisk.nextkbh.dk/elever/isab7099/omv/"
+                  target="blank"
+                  class="project--link cta"
+                  >Demo</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
               </div>
-            </div>
-            <div class="project--links"><a href="" target="blank" class="project--link cta disabled">N/A</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project7" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-mg.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">Mediegrafiker Exam</h1>
-              <div class="project--description">
-                <p>Min exam til mediegrafiker grundforløb som er bestået. Vi skulle, udover andre ting, design en reklame til Superbowlen. Vi skulle også tage en magasin design og laver det i inDesign til print, med hensyn til farve-korrigering, typografi, osv. Lavede i Winter 2018.</p>
+            </section>
+            <section id="project3" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-moa.jpg"
+                  alt=""
+                  class="project--image"
+                />
               </div>
-            </div>
-            <div class="project--links"><a href="" target="blank" class="project--link cta disabled">N/A</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-          <section id="project8" class="project">
-            <div class="project--image-wrapper"><img src="resources/project-hundeluft.jpg" alt="" class="project--image"></div>
-            <div class="project--text">
-              <h1 class="project--name">Hundelufter Reklame</h1>
-              <div class="project--description">
-                <p>En reklame jeg selve designede og printede ud til fritidsarbejde som hundelufter når jeg var unge. Lavede i Winter 2017.</p>
+              <div class="project--text">
+                <h1 class="project--name">Moana Fanside</h1>
+                <div class="project--description">
+                  <p>
+                    Vi skulle lave en fanside om en film vi selv bestemmer. Jeg
+                    valgt Moana med ideen at siden var primært marketing til
+                    yngre piger. Der var lidt under 2 uge til design og kode.
+                    Lavede i Forår 2019.
+                  </p>
+                </div>
               </div>
-            </div>
-            <div class="project--links"><a href="" target="blank" class="project--link cta disabled">N/A</a><a href="./#mit_arbejde" class="project--link cta secondary">Portfolio</a></div>
-          </section>
-
+              <div class="project--links">
+                <a
+                  href="http://grafisk.nextkbh.dk/elever/isab7099/moana/"
+                  target="blank"
+                  class="project--link cta"
+                  >Demo</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+            <section id="project4" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-krig.jpg"
+                  alt=""
+                  class="project--image"
+                />
+              </div>
+              <div class="project--text">
+                <h1 class="project--name">Krigsmuseet</h1>
+                <div class="project--description">
+                  <p>
+                    En projekt fra min mediegrafiker grundforløbet, hvor vi skal
+                    design og udvikle en plakat og mobil-webside til
+                    Krigsmuseet. Lavede i Sommer 2018.
+                  </p>
+                </div>
+              </div>
+              <div class="project--links">
+                <a
+                  href="http://grafisk.nextkbh.dk/elever/isab7099/krigsmuseet/"
+                  target="blank"
+                  class="project--link cta"
+                  >Demo</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+            <section id="project5" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-ng.jpg"
+                  alt=""
+                  class="project--image"
+                />
+              </div>
+              <div class="project--text">
+                <h1 class="project--name">National Graphic</h1>
+                <div class="project--description">
+                  <p>
+                    En projekt fra min mediegrafiker grundforløbet, hvor vi
+                    designer en avis og webside til avisen. Ingen af de skrivet
+                    content er min. Lavede i Efterår 2018.
+                  </p>
+                </div>
+              </div>
+              <div class="project--links">
+                <a
+                  href="http://grafisk.nextkbh.dk/elever/isab7099/thenationalgraphic/"
+                  target="blank"
+                  class="project--link cta"
+                  >Demo</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+            <section id="project6" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-rfa.jpg"
+                  alt=""
+                  class="project--image"
+                />
+              </div>
+              <div class="project--text">
+                <h1 class="project--name">RFA Party</h1>
+                <div class="project--description">
+                  <p>
+                    En mockup og design af invitering til en fest hostet af
+                    'RFA'. Inspirationen var zodiac og astrologi. Lavede i
+                    Winter 2016.
+                  </p>
+                </div>
+              </div>
+              <div class="project--links">
+                <a href="" target="blank" class="project--link cta disabled"
+                  >N/A</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+            <section id="project7" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-mg.jpg"
+                  alt=""
+                  class="project--image"
+                />
+              </div>
+              <div class="project--text">
+                <h1 class="project--name">Mediegrafiker Exam</h1>
+                <div class="project--description">
+                  <p>
+                    Min exam til mediegrafiker grundforløb som er bestået. Vi
+                    skulle, udover andre ting, design en reklame til
+                    Superbowlen. Vi skulle også tage en magasin design og laver
+                    det i inDesign til print, med hensyn til farve-korrigering,
+                    typografi, osv. Lavede i Winter 2018.
+                  </p>
+                </div>
+              </div>
+              <div class="project--links">
+                <a href="" target="blank" class="project--link cta disabled"
+                  >N/A</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+            <section id="project8" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/project-hundeluft.jpg"
+                  alt=""
+                  class="project--image"
+                />
+              </div>
+              <div class="project--text">
+                <h1 class="project--name">Hundelufter Reklame</h1>
+                <div class="project--description">
+                  <p>
+                    En reklame jeg selve designede og printede ud til
+                    fritidsarbejde som hundelufter når jeg var unge. Lavede i
+                    Winter 2017.
+                  </p>
+                </div>
+              </div>
+              <div class="project--links">
+                <a href="" target="blank" class="project--link cta disabled"
+                  >N/A</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+            <section id="project9" class="project">
+              <div class="project--image-wrapper">
+                <img
+                  src="resources/components.jpg"
+                  alt=""
+                  class="project--image"
+                />
+              </div>
+              <div class="project--text">
+                <h1 class="project--name">React Components</h1>
+                <div class="project--description">
+                  <p>
+                    Et opgave fra mit tid i Webudvikler Hovedforløb. Der
+                    udvikles componenter med React framework, udefter en
+                    førbestemt design.
+                  </p>
+                </div>
+              </div>
+              <div class="project--links">
+                <a
+                  href="https://rts-components.netlify.app/"
+                  target="blank"
+                  class="project--link cta"
+                  >Demo</a
+                ><a href="./#mit_arbejde" class="project--link cta secondary"
+                  >Portfolio</a
+                >
+              </div>
+            </section>
+          </div>
         </div>
       </div>
-
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

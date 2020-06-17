@@ -1,7 +1,7 @@
 // For typing effect on title
-if (document.querySelector('#typed-strings')) {
-  var typed = new Typed('#typed', {
-    stringsElement: '#typed-strings',
+if (document.querySelector("#typed-strings")) {
+  var typed = new Typed("#typed", {
+    stringsElement: "#typed-strings",
     typeSpeed: 30,
     backSpeed: 40,
     backDelay: 500,
@@ -15,17 +15,17 @@ let urlPathString = urlPath.substring(urlPath.lastIndexOf("/"));
 // Console should log '/index.html' or '/'
 // console.log(urlPathString);
 
-if (urlPathString == '/index.html' || urlPathString == '/') {
-  console.log('You are on the homepage');
+if (urlPathString == "/index.html" || urlPathString == "/") {
+  console.log("You are on the homepage");
 
   // Form validation + thank you popup
   const contactForm = document.forms[0];
 
-  contactForm.addEventListener('submit', function (e) {
+  contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const popup = this.querySelector('.form--popup');
-    const errorDiv = this.querySelector('.form--error');
+    const popup = this.querySelector(".form--popup");
+    const errorDiv = this.querySelector(".form--error");
 
     const name = this.name.value;
     const email = this.email.value;
@@ -33,44 +33,45 @@ if (urlPathString == '/index.html' || urlPathString == '/') {
 
     let errorMessage;
 
-    if (name == '' || !/\S/.test(name)) {
+    if (name == "" || !/\S/.test(name)) {
       this.name.focus();
-      errorMessage = 'Skrive dit navn, tak!';
-    } else if (email == '' || !/\S/.test(email)) {
+      errorMessage = "Skrive dit navn, tak!";
+    } else if (email == "" || !/\S/.test(email)) {
       this.email.focus();
-      errorMessage = 'Skrive din email, tak!';
+      errorMessage = "Skrive din email, tak!";
     } else if (email.match(/@/g) == null) {
       this.email.focus();
-      errorMessage = 'Mangler @';
+      errorMessage = "Mangler @";
     } else if (email.match(/\S@/) == null) {
       this.email.focus();
-      errorMessage = 'Mangler del før @';
+      errorMessage = "Mangler del før @";
     } else if (email.match(/@\S/) == null) {
       this.email.focus();
-      errorMessage = 'Mangler del efter @';
+      errorMessage = "Mangler del efter @";
     } else if (email.match(/[^@]\..+$/) == null) {
       this.email.focus();
-      errorMessage = 'Mangler sidste del (f.eks. .com, .net)';
-    } else if (message == '' || !/\S/.test(message)) {
+      errorMessage = "Mangler sidste del (f.eks. .com, .net)";
+    } else if (message == "" || !/\S/.test(message)) {
       this.message.focus();
-      errorMessage = 'Skrive en besked, tak!';
+      errorMessage = "Skrive en besked, tak!";
     } else {
       $.ajax({
         url: "https://formsubmit.co/ajax/isabrochweb@gmail.com",
         method: "POST",
-        data: {name: name,
+        data: {
+          name: name,
           email: email,
           message: message,
-          _template: this._template.value}
-        });
-      popup.innerHTML = `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`
-      this.classList.add('done');
+          _template: this._template.value,
+        },
+      });
+      popup.innerHTML = `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`;
+      this.classList.add("done");
       return true;
     }
 
     errorDiv.textContent = errorMessage;
   });
-
 
   // Having issues???
   // // Isotope sorting
@@ -91,15 +92,14 @@ if (urlPathString == '/index.html' || urlPathString == '/') {
   //   });
   // });
 
-
   // For skills bar animation
-  const skillsArray = document.querySelectorAll('.skill');
-  const skillWrapper = document.querySelector('.skill--wrapper');
+  const skillsArray = document.querySelectorAll(".skill");
+  const skillWrapper = document.querySelector(".skill--wrapper");
 
   function skillAnimation() {
     skillsArray.forEach(function (skill, i) {
-      let skillLevel = skill.querySelector('.skill--bar').dataset.lvl;
-      let skillBar = skill.querySelector('.skill--level')
+      let skillLevel = skill.querySelector(".skill--bar").dataset.lvl;
+      let skillBar = skill.querySelector(".skill--level");
 
       setTimeout(() => {
         skillBar.style.width = skillLevel;
@@ -108,62 +108,67 @@ if (urlPathString == '/index.html' || urlPathString == '/') {
   }
 
   // If skillWrapper is 50px in vp from bottom, then run the function
-  let observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        skillAnimation();
-        observer.unobserve;
-      }
-    })
-  }, {
-    root: null,
-    rootMargin: "0px 0px -50px 0px"
-  });
+  let observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          skillAnimation();
+          observer.unobserve;
+        }
+      });
+    },
+    {
+      root: null,
+      rootMargin: "0px 0px -50px 0px",
+    }
+  );
 
   observer.observe(skillWrapper);
 
-  document.querySelectorAll('.readmore--button').forEach((button) => {
-    button.addEventListener('click', () => {
-      const buttonText = button.querySelector('.readmore--button--text--wrapper');
+  document.querySelectorAll(".readmore--button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const buttonText = button.querySelector(
+        ".readmore--button--text--wrapper"
+      );
 
       console.log(buttonText);
 
-      if (button.classList.contains('om-mig--readmore')) {
-        const content = document.querySelector('.readmore--text');
-        content.classList.toggle('hiding');
+      if (button.classList.contains("om-mig--readmore")) {
+        const content = document.querySelector(".readmore--text");
+        content.classList.toggle("hiding");
 
-        if (content.classList.contains('hiding')) {
-          buttonText.textContent = 'Read more';
+        if (content.classList.contains("hiding")) {
+          buttonText.textContent = "Read more";
         } else {
-          buttonText.textContent = 'Read less';
+          buttonText.textContent = "Read less";
         }
       }
-    })
-  })
+    });
+  });
 }
 
 let projectNumber;
 const projectArray = [
-  '1950s',
-  'om_verden',
-  'moana',
-  'krigsmuseet',
-  'national_graphic',
-  'rfa_party',
-  'mediegrafiker_exam',
-  'hundelufter'
-]
+  "1950s",
+  "om_verden",
+  "moana",
+  "krigsmuseet",
+  "national_graphic",
+  "rfa_party",
+  "mediegrafiker_exam",
+  "hundelufter",
+  "components",
+];
 
-if (urlPathString == '/project.html') {
-  console.log('You are on the project page!');
+if (urlPathString == "/project.html") {
+  console.log("You are on the project page!");
 
   // Prevent clicking on disabled links
-  document.querySelectorAll('.disabled').forEach(function (item) {
-    item.addEventListener('click', function (e) {
+  document.querySelectorAll(".disabled").forEach(function (item) {
+    item.addEventListener("click", function (e) {
       e.preventDefault();
-    })
+    });
   });
-
 
   // Get linked project from ?value in url
   let projectString = window.location.search.substring(1);
@@ -178,7 +183,7 @@ if (urlPathString == '/project.html') {
   console.log(projectNumber);
 
   // Turn off transition for page load, gets reset by the next line. Small timeout is used to prevent transition on page load.
-  const container = document.querySelector('.project--container');
+  const container = document.querySelector(".project--container");
   container.style.transition = `all 0s`;
   setTimeout(() => {
     movePage(projectNumber);
@@ -187,40 +192,35 @@ if (urlPathString == '/project.html') {
     container.style.transition = ``;
   }, 1000);
 
+  document.querySelector(".arrow-left").addEventListener("click", () => {
+    changeIndex(-1);
+  });
 
+  document.querySelector(".arrow-right").addEventListener("click", () => {
+    changeIndex(+1);
+  });
 
-  document.querySelector('.arrow-left')
-    .addEventListener('click', () => {
-      changeIndex(-1);
-    });
-
-  document.querySelector('.arrow-right')
-    .addEventListener('click', () => {
-      changeIndex(+1);
-    });
-
-  window.addEventListener('keydown', function (e) {
+  window.addEventListener("keydown", function (e) {
     switch (e.key) {
-      case 'ArrowLeft':
+      case "ArrowLeft":
         changeIndex(-1);
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         changeIndex(+1);
         break;
     }
-  })
+  });
 
-  const dots = document.querySelectorAll('.dot');
-  dots.forEach(dot => {
-    dot.addEventListener('click', function () {
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot) => {
+    dot.addEventListener("click", function () {
       changeIndex([...dots].indexOf(this), true);
-    })
+    });
   });
 }
 
 // Function that increases or decreases, or takes in an index
 function changeIndex(number, isIndex = false) {
-
   if (isIndex) {
     // If given an index number, change projectNumber to index number.
     projectNumber = number;
@@ -240,16 +240,16 @@ function changeIndex(number, isIndex = false) {
 }
 
 function movePage(index) {
-  const container = document.querySelector('.project--container');
+  const container = document.querySelector(".project--container");
   let stylemove = `translateX(calc((100% + 1rem) * -${index}))`;
   container.style.transform = stylemove;
 
-  const dotsArray = document.querySelectorAll('.dot');
-  dotsArray.forEach(dot => {
-    dot.classList.remove('active');
+  const dotsArray = document.querySelectorAll(".dot");
+  dotsArray.forEach((dot) => {
+    dot.classList.remove("active");
   });
 
-  dotsArray[index].classList.add('active');
+  dotsArray[index].classList.add("active");
 
   let projectName = projectArray[index];
   let baseURL = window.location.pathname;
