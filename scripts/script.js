@@ -18,6 +18,8 @@ let urlPathString = urlPath.substring(urlPath.lastIndexOf("/"));
 if (urlPathString == "/index.html" || urlPathString == "/") {
   console.log("You are on the homepage");
 
+  const languageIsEnglish = urlPath.includes("/en/");
+
   // Form validation + thank you popup
   const contactForm = document.forms[0];
 
@@ -35,25 +37,25 @@ if (urlPathString == "/index.html" || urlPathString == "/") {
 
     if (name == "" || !/\S/.test(name)) {
       this.name.focus();
-      errorMessage = "Skrive dit navn, tak!";
+      errorMessage = languageIsEnglish ? "Missing your name." : "Skrive dit navn, tak!";
     } else if (email == "" || !/\S/.test(email)) {
       this.email.focus();
-      errorMessage = "Skrive din email, tak!";
+      errorMessage = languageIsEnglish ? "Missing an email." :"Skrive din email, tak!";
     } else if (email.match(/@/g) == null) {
       this.email.focus();
-      errorMessage = "Mangler @";
+      errorMessage = languageIsEnglish ? "Missing @ in your email." :"Mangler @";
     } else if (email.match(/\S@/) == null) {
       this.email.focus();
-      errorMessage = "Mangler del før @";
+      errorMessage = languageIsEnglish ? "Missing info before @ in your email." :"Mangler del før @";
     } else if (email.match(/@\S/) == null) {
       this.email.focus();
-      errorMessage = "Mangler del efter @";
+      errorMessage = languageIsEnglish ? "Missing info after @ in your email." :"Mangler del efter @";
     } else if (email.match(/[^@]\..+$/) == null) {
       this.email.focus();
-      errorMessage = "Mangler sidste del (f.eks. .com, .net)";
+      errorMessage = languageIsEnglish ? "Missing your email domain (i.e. .com or .net)" :"Mangler sidste del (f.eks. .com, .net)";
     } else if (message == "" || !/\S/.test(message)) {
       this.message.focus();
-      errorMessage = "Skrive en besked, tak!";
+      errorMessage = languageIsEnglish ? "Missing a message." :"Skrive en besked, tak!";
     } else {
       $.ajax({
         url: "https://formsubmit.co/ajax/isabrochweb@gmail.com",
@@ -65,7 +67,7 @@ if (urlPathString == "/index.html" || urlPathString == "/") {
           _template: this._template.value,
         },
       });
-      popup.innerHTML = `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`;
+      popup.innerHTML = languageIsEnglish ? `Thank you for your message, ${name}! I'll write back to ${email} as soon as I can.` : `Tak for din besked, ${name}! Jeg skriver tilbage til ${email} så snart jeg kan.`;
       this.classList.add("done");
       return true;
     }
