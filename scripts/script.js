@@ -14,11 +14,11 @@ let urlPath = window.location.pathname;
 let urlPathString = urlPath.substring(urlPath.lastIndexOf("/"));
 // Console should log '/index.html' or '/'
 // console.log(urlPathString);
+const languageIsEnglish = urlPath.includes("/en/");
 
 if (urlPathString == "/index.html" || urlPathString == "/") {
   console.log("You are on the homepage");
 
-  const languageIsEnglish = urlPath.includes("/en/");
 
   // Form validation + thank you popup
   const contactForm = document.forms[0];
@@ -140,9 +140,9 @@ if (urlPathString == "/index.html" || urlPathString == "/") {
         content.classList.toggle("hiding");
 
         if (content.classList.contains("hiding")) {
-          buttonText.textContent = "Read more";
+          buttonText.textContent = languageIsEnglish ? "Read more" : "Læs mere";
         } else {
-          buttonText.textContent = "Read less";
+          buttonText.textContent = languageIsEnglish ? "Read less" : "Læs mindre";
         }
       }
     });
